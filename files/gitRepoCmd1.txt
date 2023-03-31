@@ -1,0 +1,151 @@
+在项目 platform 中创建代码仓库 repo-backend
+将仓库 repo-backend 分支切换到 dev 分支
+从仓库 platform-service 中向仓库 repo-backend merge 新提交的代码
+评论仓库 repo-auth-server 的合并请求
+关闭仓库 repo-frontend 的合并请求
+在仓库 data-service 中搜索包含 "user" 的代码
+对比仓库 platform-service 中的 dev 分支和 master 分支
+修改仓库 repo-backend 的配置文件
+在项目 vcs-project 中创建代码仓库 repo-auth-service
+将仓库 repo-auth-service 分支切换到 feature/add-auth 分支
+从仓库 repo-backend 向 repo-auth-service merge 新提交的代码
+评论仓库 platform-service 的合并请求
+关闭仓库 vcs-server 的合并请求
+在仓库 data-service 中搜索包含 "order" 的代码
+对比仓库 platform-service 中的 feature/add-auth 分支和 master 分支
+修改仓库 repo-auth-service 的配置文件
+在项目 vcs-project 中创建代码仓库 repo-order-service
+将仓库 repo-order-service 分支切换到 feature/add-order 分支
+从仓库 repo-auth-service 向 repo-order-service merge 新提交的代码
+评论仓库 repo-backend 的合并请求
+关闭仓库 platform-service 的合并请求
+在仓库 data-service 中搜索包含 "product" 的代码
+对比仓库 platform-service 中的 feature/add-order 分支和 master 分支
+修改仓库 repo-auth-service 的配置文件
+在项目 platform 中创建代码仓库 repo-frontend
+将仓库 repo-frontend 分支切换到 feature/add-payment 分支
+从仓库 repo-order-service 向 repo-frontend merge 新提交的代码
+评论仓库 repo-auth-service 的合并请求
+关闭仓库 platform-service 的合并请求
+在仓库 data-service 中搜索包含 "inventory" 的代码
+platform-service 仓库基于 release 分支创建代码版本 20230321.1
+platform-service 仓库代码版本 20211202.1 的提交是什么？
+给platform-service 仓库所有状态为文件冲突的合并请求评论信息：“尽快rebase release分支”
+关闭 platform-service 仓库所有创建三个月之前并且状态失败的合并请求
+看看 vcs-server 仓库报表中的访问数据
+platform-profile 仓库的 develop 分支最新提交是什么
+platform-profile 仓库的 release 分支最新引用信息是什么
+设置 platform-hook 的保护分支
+在 platform-service 仓库中为分支 dev/wr-env 创建一个指向 release 的合并请求
+给我删除 platform-service 这个仓库中 feat/support-multi-email-sender 分支
+搜索下 platform-login 仓库中名称包含 mr/release 的所有分支
+删除仓库 platform-service 中的所有过时分支
+修改一下 platform-service 仓库的保护分支策略
+platform-framework 仓库最新创建的两个分支是什么？
+给我对比下 platform-service 仓库 5ca5271e2794c4f043407d91977c52af61c7ba32 和 0a3037f06a5c90c27525f78a768e6ebf485b6348 这两个提交之间的差异
+我要看看 platform-service 仓库 bdcd201c32716c4524583882fa6e5c23a9d6a814 的提交内容
+给我看看刘扬洋所有有关 #27760 事项的提交
+release-5.0.0-cms 是codedog-main 仓库的过时分支吗？
+删除 wangrui 项目下的代码仓库 vcs-server
+关闭 wangrui 项目下 vcs-server 仓库 #32 合并请求
+coding-devops 仓库下所有名称类似 coding-platform-release 的分支
+查看下 coding-repo-helm 仓库 develop 分支下王睿的所有提交
+我想看看 coding-repo-helm 仓库默认分支下的 README.md 文件
+给我看看 vcs-server 仓库中和 platformInfra.Grpc 相关的代码
+看看李文秋过去两周创建的所有合并请求
+给我看看 pual 在 svn-repo-manager 仓库最近几天的提交
+查看仓库platform-infra-hook 中的 build.gradle 文件
+在 vcs-server 仓库中搜索 #7377 这个关键字相关的提交
+查看“develop”分支上的提交记录，确保已合并“feature-branch”的更改。
+创建一个名为“hotfix”新分支，并切换到该分支。
+合并“hotfix”分支到“develop”分支。
+查看“develop”和“master”分支的提交记录。
+创建一个名为“issue-24”的新分支，并切换到该分支。
+发表有关“issue-24” MR更改的评论。
+查看 vimo-server仓库的所有合并请求。
+创建一个新的合并请求将“issue-24”分支合并到“develop”分支。
+查看“issue-24”的分支版本历史记录。
+查看仓库设置并查看“develop”分支的保护设置。
+更新“develop”分支的保护设置以防止非管理员合并更改。
+合并“feature-branch”分支到“develop”分支。
+查看“feature-branch”分支上的提交记录。
+ 查看"vimo-server"仓库 “develop”分支上的提交记录。
+在我最近访问的仓库创建一个名为“feature-branch”的新分支，并切换到该分支。
+对比 my-project 最近两次提交记录之间的差异。
+查看 my-project 最近的提交记录。
+在仓库 my-project 创建一个名为“develop”的分支，并查看该分支。
+创建一个新的仓库，名称为“my-project”。
+在仓库 marketing 中创建名为 promo-materials 的新分支。
+创建名为example的新仓库。
+查看下我最近访问仓库的提交。
+仓库 wireshark 中添加开发人员吴慧明。
+在代码仓库添加一个新仓库 mygradio，并添加基础 java 代码。
+转移代码仓库 DeepSpeed 至项目 backendserver 中
+我需要修改 microsoft 项目下 fhir-server 仓库的权限方案
+我要看看 pstn-callrecord-plan-alerts 仓库的权限方案
+在 directx 仓库中添加新的部署公钥
+我要查看下 FASTER 仓库的部署公钥
+ms-tpm-20-ref 把其中的 develop 分支设置为隐藏分支
+我要查看下仓库 vscode-typescript-next 的合并方向设置
+将仓库mstic设置为公开仓库
+目前关闭 LightBGM 这个仓库的所有访问途径
+暂时不允许用 http 协议访问仓库 playwright
+最近访问的项目下 FluidFramework 仓库推送每个文件限制最大 100MB
+我要修改下quicreach 仓库的禁止推送的文件列表
+typespec 这个仓库之后不再允许强推
+monaco-editor 仓库的合并请求模板需要修改一下
+把 CBL-mariner 仓库的默认分支修改为 master
+playwright.dev 这个仓库添加一个标签命名规则 *-release
+我需要给 microsoft 项目下 powerToys 仓库添加保护分支
+给我看看 vscode-python 仓库的推送日志
+给 Quantum 仓库添加推送规则限制
+我想修改下 qsharp-compiler 仓库的分支设置
+在项目 platform 中创建一个名为 mypytorch 的代码仓库
+需要我审批的合并请求都有哪些
+看看代码仓库 vcs-server 中未合并的合并请求都有哪些
+给合并请求 #2345 添加一条评论
+在仓库 go-git-server 中基于分支 develop 创建分支 mr/develop/some-fix1
+代码仓库 codedog-main 的保护分支都有什么
+我要看看仓库 vcs-server develop 分支最近5个提交是什么
+给我看看 vcs-server 提交 c8a1586 的内容
+在 go-git-server 仓库的 master 分支搜索下 syscall. 关键字
+我想看一下vcs-project 项目下 repo-auth-server 仓库 develop 分支的 README.md 文件
+搜索 platform-mark 项目 release-4.0.4.1 分支下的 gradle 文件
+用 http 协议下载 gitops-server 仓库的地址是什么
+请生成 prometheus-tools 仓库 ssh 协议的下载地址
+在我经常工作的项目下创建 my-lstm-model 仓库
+给我罗列下刘玉丰在 e-admin 仓库main-4  三周内的提交列表
+搜索下 vcs-project 项目 repo-importer 仓库 develop 分支中所有 GPG 校验未通过的提交
+给我看看 李晨在 svn-server 仓库去年12月的提交内容
+搜索下 vcs-scheduler 仓库 develop 分支中关键字为 json 相关的提交
+发送下 coding-devops 仓库的分支页面地址
+删除 lfs-test 仓库下 lc/develop 分支
+下载vcs-project项目 git-tools 仓库develop 分支
+将 git-analyzer 仓库所有 rel 开头的分支全删了
+罗列下 deploy-test-config 仓库需要我审批的的和并请求
+搜索下 team-resources 项目中标签为有重构计划的合并请求
+仓库 coding-frontend-login 评审者为 王英杰的所有mr
+team-okr 中和分支 release 相关的合并请求都有什么
+我想看看过去一个月内项目 coding-private 下所有完成的合并
+在 workbench 中创建一个合并请求，源分支 dev/lc ，目标分支 release，标题为解决银联现场问题
+仓库 testing-report 中搜索下和 jdk 相关的合并请求
+devlivery 这个仓库中搜索下描述中带有代码扫描的mr
+我想查看下过去一个月我发起的所有合并请求
+过去三天 孙鑫审批的所有mr
+我想看看 adjust redission version to 3.17.1 这个mr的所有评论
+项目协同这个项目下目前冲突的 mr 有哪些
+搜索下 CODING 质量建设这个项目下和 platform 相关的仓库
+git-batch 这个仓库基于分支 master 创建一个标签版本 v1.0.0
+在我最近访问的仓库创建一个版本发布标题为 内部测试 release 的代码版本
+给我看看 c-design 仓库李雪峰负责的所有代码版本
+codedog-main 仓库所有已发布的代码版本都有哪些
+codedog-server 仓库所有处于预发布状态的代码版本都有哪些
+对比下 codedog-analysis-frontend 仓库中 dev/dy 和 develop 分支的差异
+coding-xcheck 仓库 master 分支和develop 分支有什么区别
+我想了解下 coding-artifacts 仓库最近一个月的综合情况
+将代码仓库 vmcontrol 的分支 *-stable 设置为保护分支
+打开仓库 vcs-server 的设置页面
+使用 SSH 克隆代码仓库gradio
+使用 HTTPS 克隆 alpaca-lora 仓库
+在github项目下，新建代码仓库，名为 hello-world
+搜下 platform-infra 仓库中带有 feat: #27005 的所有提交
