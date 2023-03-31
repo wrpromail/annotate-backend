@@ -186,16 +186,25 @@ func (l *LocalTextFileMgr) ReadFile(fileId string) (rst []string, err error) {
 	}
 }
 
-// todo 考虑在访问具体文件 line 时是否也加载文件
 func GetFileLine(c *gin.Context) {
 	id := c.Param("id")
 	lineNumber := c.Param("number")
 	ln, _ := strconv.Atoi(lineNumber)
 	rst, err := DLTM.GetFileLine(id, ln)
 	if err != nil {
-		c.JSON(500, gin.H{
-			"error": err.Error(),
-		})
+		rd, e := DLTM.ReadFile(id)
+		if e != nil {
+			c.JSON(500, gin.H{
+				"error": err.Error(),
+			})
+		}
+		if len(rd) > ln {
+			c.JSON(200, rd[ln])
+		} else {
+			c.JSON(404, gin.H{
+				"error": "line number out of range",
+			})
+		}
 		return
 	}
 	c.JSON(200, rst)
@@ -209,8 +218,27 @@ func init() {
 	}
 }
 
+type ReportRequest struct {
+	Message    string `json:"message"`
+	UpVote     bool   `json:"upvote"`
+	DownVote   bool   `json:"downvote"`
+	ReportType int    `json:"report_type"`
+}
+
+// FileLineReport 文件行报告，比如脏数据等
+func FileLineReport(c *gin.Context) {
+
+}
+
+type LocationMark struct {
+	Start  int    `json:"start"`
+	End    int    `json:"end"`
+	Target string `json:"target"`
+}
+
 type AnnotateRequest struct {
-	Option string `json:"option"`
+	Option        string         `json:"option"`
+	LocationMarks []LocationMark `json:"location_marks"`
 }
 
 func FileLineAnnotate(c *gin.Context) {
@@ -263,5 +291,4 @@ func FileLineAnnotate(c *gin.Context) {
 			"error": "option is empty",
 		})
 	}
-
 }
