@@ -10,6 +10,26 @@ import (
 	"testing"
 )
 
+func TestReadNERREsult(t *testing.T) {
+	data, err := os.ReadFile("export-2023-04-05T14_02_12.180Z.json")
+	if err != nil {
+		panic(err)
+	}
+
+	// unmarshal
+	var result []EntityRecord
+	err = json.Unmarshal(data, &result)
+	if err != nil {
+		panic(err)
+	}
+	for _, file := range result {
+		t.Log(file.LabeledData)
+		t.Log(file.GetObjectsDetail())
+	}
+
+}
+
+// TestWriteIntentionResult 将 labelbox 标注数据转化为 LSTM 意图训练所需要的数据格式
 func TestWriteIntentionResult(t *testing.T) {
 	var rst []IntentionLabeledPair
 
@@ -67,6 +87,7 @@ func TestReadLabelBoxExportFile(t *testing.T) {
 	t.Log(len(result))
 }
 
+// TestGetLabeledData 从返回的数据 labelData 读取文件内容
 func TestGetLabeledData(t *testing.T) {
 	url := "https://storage.labelbox.com/clfcef7c406tt08z6emsmg04q%2F8dacbd9b-c10f-7327-fe81-cfbe6490aead-BIGZcRAliu.txt?Expires=1681750270830&KeyName=labelbox-assets-key-3&Signature=lTud_45BCHlK5ERAsgFg7nkLVNY"
 	resp, err := http.Get(url)

@@ -1,7 +1,9 @@
 package labelbox
 
 import (
+	"encoding/json"
 	"fmt"
+	log "github.com/sirupsen/logrus"
 	"io"
 	"net/http"
 	"time"
@@ -36,6 +38,39 @@ func (e *EntityRecord) ReadLabeledDataContent() (result string, err error) {
 	}
 
 	result = string(body)
+	return
+}
+
+type ObjectSimple struct {
+	ClassName string `json:"className"`
+	Start     int    `json:"start"`
+	End       int    `json:"end"`
+}
+
+func (e *EntityRecord) GetObjectsDetail() (result []ObjectSimple) {
+	objects := e.Label.Objects
+	if len(objects) == 0 {
+		return
+	}
+
+	for _, rawObject := range objects {
+		rb, _ := json.Marshal(rawObject)
+		var rst ObjectEntity
+		err := json.Unmarshal(rb, &rb)
+		if err != nil {
+			log.Error(err)
+			continue
+		}
+
+		r := ObjectSimple{
+			ClassName: rst.Title,
+			Start:     rst.Data.Location.Start,
+			End:       rst.Data.Location.End,
+		}
+		result = append(result, r)
+
+	}
+
 	return
 }
 

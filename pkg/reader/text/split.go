@@ -2,7 +2,9 @@ package text
 
 import (
 	"bufio"
+	"errors"
 	"fmt"
+	log "github.com/sirupsen/logrus"
 	"io/ioutil"
 	"math/rand"
 	"mymlops/annotate-helper/pkg/utils"
@@ -19,7 +21,37 @@ type LocalFileSplit struct {
 	out  string
 }
 
+func checkPath(path string) error {
+
+	// 检查路径是否存在
+	_, err := os.Stat(path)
+	if err != nil {
+		// 如果路径不存在，创建目录
+		if os.IsNotExist(err) {
+			if err := os.MkdirAll(path, 0644); err != nil {
+				return err
+			}
+		}
+	}
+
+	// 检查路径是否是目录
+	fileInfo, err := os.Stat(path)
+	if err != nil {
+		return err
+	}
+	if !fileInfo.IsDir() {
+		return errors.New("path exists and not directory")
+	}
+
+	return nil
+}
+
 func (l *LocalFileSplit) Split() {
+	if err := checkPath(l.out); err != nil {
+		log.Error(err)
+		return
+	}
+
 	rand.Seed(time.Now().UnixNano())
 
 	// 读取文本文件内容
