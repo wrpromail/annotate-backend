@@ -56,7 +56,7 @@ func (e *EntityRecord) GetObjectsDetail() (result []ObjectSimple) {
 	for _, rawObject := range objects {
 		rb, _ := json.Marshal(rawObject)
 		var rst ObjectEntity
-		err := json.Unmarshal(rb, &rb)
+		err := json.Unmarshal(rb, &rst)
 		if err != nil {
 			log.Error(err)
 			continue

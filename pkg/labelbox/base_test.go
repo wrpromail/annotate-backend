@@ -23,8 +23,13 @@ func TestReadNERREsult(t *testing.T) {
 		panic(err)
 	}
 	for _, file := range result {
-		t.Log(file.LabeledData)
-		t.Log(file.GetObjectsDetail())
+		objectString := file.LabeledData
+		objectDL := file.GetObjectsDetail()
+		if len(objectDL) > 0 {
+			t.Log(objectString)
+			runes := []rune(objectString)
+			t.Log(string(runes[objectDL[0].Start : objectDL[0].End+1]))
+		}
 	}
 
 }
