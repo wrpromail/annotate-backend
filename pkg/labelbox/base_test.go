@@ -28,6 +28,7 @@ func TestReadNERREsult(t *testing.T) {
 		if len(objectDL) > 0 {
 			t.Log(objectString)
 			runes := []rune(objectString)
+			// 使用切片注意越界问题
 			t.Log(string(runes[objectDL[0].Start : objectDL[0].End+1]))
 		}
 	}

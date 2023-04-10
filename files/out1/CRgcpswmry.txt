@@ -1,0 +1,1 @@
+我们需要在 Kubernetes 中使用 ConfigMap 对象来管理配置数据。

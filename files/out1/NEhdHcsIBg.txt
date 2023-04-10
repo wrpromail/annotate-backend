@@ -1,0 +1,1 @@
+要更新 Kubernetes 中的镜像，请使用命令 kubectl set image。

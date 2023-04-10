@@ -1,0 +1,1 @@
+在 Kubernetes 中，所有的服务都应该使用 Service 对象进行管理。

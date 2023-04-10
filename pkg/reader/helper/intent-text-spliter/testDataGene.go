@@ -1,4 +1,4 @@
-package helper
+package intent_text_spliter
 
 import (
 	"bufio"
