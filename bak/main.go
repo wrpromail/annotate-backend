@@ -3,7 +3,6 @@ package main
 import (
 	"github.com/gin-gonic/gin"
 	"log"
-	"mymlops/annotate-helper/pkg"
 )
 
 func CORS() gin.HandlerFunc {
@@ -27,7 +26,7 @@ func main() {
 	engine.Use(CORS())
 	v1Group := engine.Group("/api/v1")
 
-	pkg.RegisterFileController(v1Group)
+	RegisterFileController(v1Group)
 
 	if err := engine.Run(":6789"); err != nil {
 		log.Fatal(err)

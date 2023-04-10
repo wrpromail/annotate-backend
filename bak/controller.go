@@ -1,8 +1,8 @@
-package pkg
+package main
 
 import (
 	"github.com/gin-gonic/gin"
-	"mymlops/annotate-helper/pkg/service"
+	"github.com/wrpromail/annotate-helper/bak/service"
 )
 
 func RegisterFileController(router *gin.RouterGroup) {
