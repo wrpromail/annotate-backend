@@ -1,1 +1,0 @@
-在 Kubernetes 中，可以使用 Operator 模式来管理复杂的应用程序和服务。

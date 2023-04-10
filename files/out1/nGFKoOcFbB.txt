@@ -1,1 +1,0 @@
-使用 Ansible Galaxy 可以方便地扩展 Ansible 的功能。

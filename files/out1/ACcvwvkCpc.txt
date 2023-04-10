@@ -1,1 +1,0 @@
-我们需要使用 Helm 来管理 Kubernetes 中的应用程序。

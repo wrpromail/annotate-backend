@@ -1,1 +1,0 @@
-在 Jenkins 中，可以使用 Build Pipeline 插件来可视化构建流程。

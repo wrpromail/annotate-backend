@@ -11,28 +11,55 @@ import (
 )
 
 func TestReadNERREsult(t *testing.T) {
-	data, err := os.ReadFile("export-2023-04-05T14_02_12.180Z.json")
+	data, err := os.ReadFile("test.json")
 	if err != nil {
 		panic(err)
 	}
 
-	// unmarshal
 	var result []EntityRecord
 	err = json.Unmarshal(data, &result)
 	if err != nil {
 		panic(err)
 	}
+	//result := EntityRecordListPreProcessing(rst)
+	//if len(result) > 0 {
+	//	t.Log(result[0].LabeledData)
+	//}
+	//
+	//outputData, err := json.Marshal(result)
+	//if err != nil {
+	//	panic(err)
+	//}
+	//
+	//err = ioutil.WriteFile("test.json", outputData, 0644)
+	//if err != nil {
+	//	panic(err)
+	//}
+
+	var validBIO []BIO
+
 	for _, file := range result {
 		objectString := file.LabeledData
 		objectDL := file.GetObjectsDetail()
 		if len(objectDL) > 0 {
-			t.Log(objectString)
-			runes := []rune(objectString)
-			// 使用切片注意越界问题
-			t.Log(string(runes[objectDL[0].Start : objectDL[0].End+1]))
+			bio := BIO{
+				Text:    objectString,
+				Objects: objectDL,
+			}
+			if checkOverlap(bio.Objects) {
+				// overlap 的数据暂时跳过
+			} else {
+				validBIO = append(validBIO, bio)
+			}
+			//runes := []rune(objectString)
+			//// 使用切片注意越界问题
+			//t.Log(string(runes[objectDL[0].Start : objectDL[0].End+1]))
 		}
 	}
-
+	err = bioToTensorFlowFormat(validBIO, "output.txt")
+	if err != nil {
+		t.Error(err)
+	}
 }
 
 // TestWriteIntentionResult 将 labelbox 标注数据转化为 LSTM 意图训练所需要的数据格式

@@ -1,1 +1,0 @@
-Docker Compose 可以方便地定义和管理多个 Docker 容器组成的应用程序。

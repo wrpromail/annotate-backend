@@ -4,7 +4,7 @@ import (
 	"bufio"
 	"fmt"
 	log "github.com/sirupsen/logrus"
-	"mymlops/annotate-helper/pkg/utils"
+	"github.com/wrpromail/annotate-helper/pkg/utils"
 	"os"
 	"path/filepath"
 	"regexp"

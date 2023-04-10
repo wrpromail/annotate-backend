@@ -1,1 +1,0 @@
-Prometheus 可以通过 Alertmanager 进行告警的设置和管理。

@@ -5,7 +5,10 @@ import (
 	"fmt"
 	log "github.com/sirupsen/logrus"
 	"io"
+	"io/ioutil"
 	"net/http"
+	"os"
+	"strings"
 	"time"
 )
 
@@ -41,10 +44,63 @@ func (e *EntityRecord) ReadLabeledDataContent() (result string, err error) {
 	return
 }
 
+type BIO struct {
+	Text    string         `json:"text"`
+	Objects []ObjectSimple `json:"objects"`
+}
+
 type ObjectSimple struct {
 	ClassName string `json:"className"`
 	Start     int    `json:"start"`
 	End       int    `json:"end"`
+}
+
+func checkOverlap(objects []ObjectSimple) bool {
+	for i, obj1 := range objects {
+		for j, obj2 := range objects {
+			if i != j && ((obj1.Start >= obj2.Start && obj1.Start < obj2.End) || (obj1.End > obj2.Start && obj1.End <= obj2.End)) {
+				return true
+			}
+		}
+	}
+	return false
+}
+
+func bioToTensorFlowFormat(bios []BIO, outputFile string) error {
+	file, err := os.Create(outputFile)
+	if err != nil {
+		return err
+	}
+	defer file.Close()
+
+	for _, bio := range bios {
+		textRunes := []rune(bio.Text)
+		labels := make([]string, len(textRunes))
+
+		// Initialize labels with "O"
+		for i := range labels {
+			labels[i] = "O"
+		}
+
+		for _, obj := range bio.Objects {
+			if obj.Start >= 0 && obj.End <= len(textRunes) {
+				for i := obj.Start; i < obj.End; i++ {
+					prefix := "I-"
+					if i == obj.Start {
+						prefix = "B-"
+					}
+					labels[i] = prefix + obj.ClassName
+				}
+			}
+		}
+
+		for i, r := range textRunes {
+			_, _ = file.WriteString(fmt.Sprintf("%c %s\n", r, labels[i]))
+		}
+		_, _ = file.WriteString("\n") // Add an empty line between sentences
+	}
+
+	return nil
 }
 
 func (e *EntityRecord) GetObjectsDetail() (result []ObjectSimple) {
@@ -72,6 +128,37 @@ func (e *EntityRecord) GetObjectsDetail() (result []ObjectSimple) {
 	}
 
 	return
+}
+
+type EntityRecordArray []EntityRecord
+
+func EntityRecordListPreProcessing(source []EntityRecord) (result []EntityRecord) {
+	if len(source) == 0 {
+		return
+	}
+	for _, entity := range source {
+		if strings.HasPrefix(entity.LabeledData, "http") {
+			var newEntity EntityRecord
+			newEntity = entity
+			resp, err := http.Get(entity.LabeledData)
+			if err != nil {
+				panic(err)
+			}
+
+			defer resp.Body.Close()
+			body, err := ioutil.ReadAll(resp.Body)
+			if err != nil {
+				panic(err)
+			}
+
+			newEntity.LabeledData = string(body)
+			result = append(result, newEntity)
+		} else {
+			result = append(result, entity)
+		}
+	}
+	return
+
 }
 
 type EntityRecord struct {

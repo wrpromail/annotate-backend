@@ -1,1 +1,0 @@
-在 Jenkins 中，可以使用 Pipeline 插件来定义复杂的构建流程。

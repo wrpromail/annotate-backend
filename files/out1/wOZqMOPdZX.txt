@@ -1,1 +1,0 @@
-Jenkins 可以通过 Pipeline 进行工作流的定义和管理。

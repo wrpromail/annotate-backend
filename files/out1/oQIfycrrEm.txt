@@ -1,1 +1,0 @@
-Kubernetes 可以通过 HPA 进行水平自动伸缩的管理。
